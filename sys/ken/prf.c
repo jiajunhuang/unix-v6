@@ -36,6 +36,8 @@ char	*panicstr;
  * all system activities are pretty much
  * suspended.
  * Printf should not be used for chit-chat.
+ *
+ * printf函数
  */
 printf(fmt,x1,x2,x3,x4,x5,x6,x7,x8,x9,xa,xb,xc)
 char fmt[];
