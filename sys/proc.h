@@ -5,6 +5,8 @@
  * process may be swapped out.
  * Other per process data (user.h)
  * is swapped with the process.
+ *
+ * 进程
  */
 struct	proc
 {

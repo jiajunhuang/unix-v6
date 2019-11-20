@@ -260,6 +260,8 @@ swaper:
  * if the calling process is not in RUN state,
  * arrangements for it to restart must have
  * been made elsewhere, usually by calling via sleep.
+ *
+ * 调度
  */
 swtch()
 {
@@ -271,10 +273,12 @@ swtch()
 		p = &proc[0];
 	/*
 	 * Remember stack of caller
+     * 保存上下文
 	 */
 	savu(u.u_rsav);
 	/*
 	 * Switch to scheduler's stack
+     * 切换栈
 	 */
 	retu(proc[0].p_addr);
 
@@ -285,6 +289,7 @@ loop:
 	n = 128;
 	/*
 	 * Search for highest-priority runnable process
+     * 找一个优先级最高的进程
 	 */
 	i = NPROC;
 	do {
@@ -300,6 +305,7 @@ loop:
 	} while(--i);
 	/*
 	 * If no process is runnable, idle.
+     * 没有找到
 	 */
 	if(p == NULL) {
 		p = rp;
@@ -347,6 +353,8 @@ loop:
  * The subtle implication of the returned value of swtch
  * (see above) is that this is the value that newproc's
  * caller in the new process sees.
+ *
+ * 内核中的fork。创建一个新的进程。
  */
 newproc()
 {
@@ -369,7 +377,7 @@ retry:
 		goto retry;
 	}
 	for(rpp = &proc[0]; rpp < &proc[NPROC]; rpp++) {
-		if(rpp->p_stat == NULL && p==NULL)
+		if(rpp->p_stat == NULL && p==NULL)  // 找一个可用的proc结构体
 			p = rpp;
 		if (rpp->p_pid==mpid)
 			goto retry;
@@ -379,6 +387,7 @@ retry:
 
 	/*
 	 * make proc entry for new proc
+     * 设置结构体的字段
 	 */
 
 	rip = u.u_procp;

@@ -104,9 +104,9 @@ main()
 	 */
 
 	*lks = 0115;
-	cinit();
-	binit();
-	iinit();
+	cinit(); // 初始化字节设备
+	binit(); // 初始化buffer
+	iinit(); // 初始化文件系统
 	rootdir = iget(rootdev, ROOTINO);
 	rootdir->i_flag =& ~ILOCK;
 	u.u_cdir = iget(rootdev, ROOTINO);
@@ -128,7 +128,7 @@ main()
 		 */
 		return;
 	}
-	sched();
+	sched();  // 调度。这个函数从不返回，是个无限循环。Go语言里也有这种。
 }
 
 /*
