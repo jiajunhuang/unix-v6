@@ -84,7 +84,7 @@ struct map *mp;
 		if (a+size == bp->m_addr && bp->m_size) {  // 如果右边界是当前unit的起始地址
 			bp->m_addr =- size;  // 把bp->m_addr设置成a的起始地址
 			bp->m_size =+ size; // 把size加上去
-		} else if (size) do { // TODO 这里还没理清
+		} else if (size) do { // 增加一个新的map来存储归还的内存空间
 			t = bp->m_addr;
 			bp->m_addr = a;
 			a = t;
