@@ -1,4 +1,5 @@
 /*
+ * super block。元信息。
  * Definition of the unix super block.
  * The root super block is allocated and
  * read in iinit/alloc.c. Subsequently

@@ -7,6 +7,8 @@
 #include "../conf.h"
 #include "../buf.h"
 
+// 包括获取、更新等对inode进行的操作
+
 /*
  * Look up an inode by device,inumber.
  * If it is in core (in the inode structure),

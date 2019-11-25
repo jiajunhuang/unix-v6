@@ -1,4 +1,5 @@
 /*
+ * 文件
  * One file structure is allocated
  * for each open/creat/pipe call.
  * Main use is to hold the read/write

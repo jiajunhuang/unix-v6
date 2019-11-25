@@ -1,4 +1,5 @@
 /*
+ * inode的真正定义。这个才被用到。ino.h里的没有被用到。
  * The I node is the focus of all
  * file activity in unix. There is a unique
  * inode allocated for each active file,

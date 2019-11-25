@@ -6,6 +6,8 @@
 #include "../file.h"
 #include "../inode.h"
 
+// 文件相关的操作。 read, write, creat, open, close等。
+
 /*
  * read system call
  */

@@ -1,5 +1,6 @@
 #
 /*
+ * read，write等函数的中间层函数
  */
 
 #include "../param.h"

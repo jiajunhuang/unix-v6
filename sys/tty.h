@@ -1,3 +1,5 @@
+// tty相关
+
 /*
  * A clist structure is the head
  * of a linked list queue of characters.

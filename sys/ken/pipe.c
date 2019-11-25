@@ -1,5 +1,6 @@
 #
 /*
+ * 管道
  */
 
 #include "../param.h"

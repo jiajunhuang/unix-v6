@@ -1,5 +1,6 @@
 #
 /*
+ * inode相关的操作，包括申请和归还。
  */
 
 #include "../param.h"

@@ -1,4 +1,5 @@
 /*
+ * inode的定义
  * Inode structure as it appears on
  * the disk. Not used by the system,
  * but by things like check, df, dump.

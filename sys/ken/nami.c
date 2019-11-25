@@ -5,6 +5,8 @@
 #include "../systm.h"
 #include "../buf.h"
 
+// pathname转换成inode的操作
+
 /*
  * Convert a pathname into a pointer to
  * an inode. Note that the inode is locked.
