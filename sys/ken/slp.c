@@ -1,5 +1,6 @@
 #
 /*
+ * 包含了进程方面的函数，例如sleep，swtch等
  */
 
 #include "../param.h"

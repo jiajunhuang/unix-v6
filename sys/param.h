@@ -1,5 +1,7 @@
 /*
  * tunable variables
+ *
+ * 定义了一些宏
  */
 
 #define	NBUF	15		/* size of buffer cache */

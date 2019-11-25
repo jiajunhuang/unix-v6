@@ -1,4 +1,5 @@
 /*
+ * 所有的声明。因为没有赋值，所以都为零值。
  * Random set of variables
  * used by more than one
  * routine.

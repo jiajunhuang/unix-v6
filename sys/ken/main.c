@@ -7,6 +7,8 @@
 #include "../inode.h"
 #include "../seg.h"
 
+// 包含了main函数，UNIX从这里初始化
+
 #define	CLOCK1	0177546
 #define	CLOCK2	0172540
 /*
