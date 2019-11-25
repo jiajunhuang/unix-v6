@@ -1,5 +1,6 @@
 #
 /*
+ * block I/O
  */
 
 #include "../param.h"

@@ -11,6 +11,8 @@
  * clock is called straight from
  * the real time clock interrupt.
  *
+ * 获取时间
+ *
  * Functions:
  *	reprime clock
  *	copy *switches to display

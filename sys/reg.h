@@ -2,6 +2,8 @@
  * Location of the users' stored
  * registers relative to R0.
  * Usage is u.u_ar0[XX].
+ *
+ * registers 寄存器
  */
 #define	R0	(0)
 #define	R1	(-2)

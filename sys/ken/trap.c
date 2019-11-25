@@ -6,6 +6,8 @@
 #include "../reg.h"
 #include "../seg.h"
 
+// 中断
+
 #define	EBIT	1		/* user error bit in PS: C-bit */
 #define	UMODE	0170000		/* user-mode bits in PS word */
 #define	SETD	0170011		/* SETD instruction */
@@ -30,6 +32,7 @@ char	regloc[9]
 };
 
 /*
+ * 中断处理
  * Called from l40.s or l45.s when a processor trap occurs.
  * The arguments are the words saved on the system stack
  * by the hardware and software during the trap processing.

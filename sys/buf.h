@@ -1,4 +1,5 @@
 /*
+ * buffer，双向链表串起来。
  * Each buffer in the pool is usually doubly linked into 2 lists:
  * the device with which it is currently associated (always)
  * and also on a list of blocks available for allocation

@@ -3,6 +3,7 @@
  */
 
 /*
+ * 系统中断向量表
  * This table is the switch used to transfer
  * to the appropriate routine for processing a system call.
  * Each row contains the number of arguments expected

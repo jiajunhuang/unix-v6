@@ -9,6 +9,8 @@
 #include "../inode.h"
 #include "../reg.h"
 
+// 处理信号
+
 /*
  * Priority for tracing
  */

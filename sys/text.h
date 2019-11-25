@@ -3,6 +3,8 @@
  * One allocated per pure
  * procedure on swap device.
  * Manipulated by text.c
+ *
+ * text对象。这里的text是text这个段(segment)
  */
 struct text
 {
