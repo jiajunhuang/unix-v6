@@ -5,6 +5,7 @@
  * routine.
  */
 char	canonb[CANBSIZ];	/* buffer for erase and kill (#@) */
+// 内存和swap的全局变量。coremap是内存(64byte一个单位)，swapmap是磁盘(256byte一个单位)。
 int	coremap[CMAPSIZ];	/* space for core allocation */
 int	swapmap[SMAPSIZ];	/* space for swap allocation */
 int	*rootdir;		/* pointer to inode of root directory */

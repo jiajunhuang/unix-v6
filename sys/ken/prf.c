@@ -1,6 +1,21 @@
 #
 /*
  * 包含了panic和一些显示字符串相关的函数
+ *
+ * 调用关系链：
+ *
+ *      panic       deverror
+ *        |             |
+ *        |           prdev
+ *        |             |
+ *         \           /
+ *          \         /
+ *             printf
+ *               |
+ *             printn
+ *               |
+ *             putchar
+ *
  */
 
 #include "../param.h"
@@ -38,7 +53,7 @@ char	*panicstr;
  * suspended.
  * Printf should not be used for chit-chat.
  *
- * printf函数
+ * printf函数。这是给内核用的，和libc里的又不一样了。
  */
 printf(fmt,x1,x2,x3,x4,x5,x6,x7,x8,x9,xa,xb,xc)
 char fmt[];
@@ -78,6 +93,7 @@ printn(n, b)
 }
 
 /*
+ * 往console上打印一个字符
  * Print a character on console.
  * Attempts to save and restore device
  * status.
@@ -88,7 +104,12 @@ putchar(c)
 {
 	register rc, s;
 
+    /*
+     * 这里的SW，KL，跳转到定义会发现，都是写死的地址。这是一个寄存器变量，指向console。
+     */
 	rc = c;
+    // 这里本来应该是 if(SW == 0)。但是SW是一个地址。所以这里是一种trick,
+    // 不必深究。
 	if(SW->integ == 0)
 		return;
 	while((KL->xsr&0200) == 0)
@@ -112,6 +133,8 @@ putchar(c)
  * fatal errors.
  * It syncs, prints "panic: mesg" and
  * then loops.
+ *
+ * 打印然后循环idle。
  */
 panic(s)
 char *s;
