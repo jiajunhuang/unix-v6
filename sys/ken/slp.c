@@ -160,15 +160,17 @@ sloop:
 	sleep(&runin, PSWP);
 
 loop:
-	spl6();
+	spl6();  // m40.s。设置处理器的priority为6。
 	n = -1;
+    // 循环
 	for(rp = &proc[0]; rp < &proc[NPROC]; rp++)
+        // 搜索 SRUN并且设置了SLOAD的flag的进程
 	if(rp->p_stat==SRUN && (rp->p_flag&SLOAD)==0 &&
 	    rp->p_time > n) {
 		p1 = rp;
 		n = rp->p_time;
 	}
-	if(n == -1) {
+	if(n == -1) { // 没找到(因为n没有被更新，还是-1)
 		runout++;
 		sleep(&runout, PSWP);
 		goto loop;
@@ -266,12 +268,12 @@ swaper:
  */
 swtch()
 {
-	static struct proc *p;
+	static struct proc *p;  // p是一个全局变量。第一次调用时会初始化。如下。
 	register i, n;
 	register struct proc *rp;
 
 	if(p == NULL)
-		p = &proc[0];
+		p = &proc[0];  // 初始化p。所以p是一个全局变量，永远指向 proc[0]
 	/*
 	 * Remember stack of caller
      * 保存上下文
@@ -281,7 +283,7 @@ swtch()
 	 * Switch to scheduler's stack
      * 切换栈
 	 */
-	retu(proc[0].p_addr);
+	retu(proc[0].p_addr);  // 把proc[0]的栈切换到调度者。所以接下来，又是在sched的栈上执行了。
 
 loop:
 	runrun = 0;
@@ -306,7 +308,7 @@ loop:
 	} while(--i);
 	/*
 	 * If no process is runnable, idle.
-     * 没有找到
+     * 没有找到。不过p不是NULL，因为它是全局变量，已经被初始化过了。所以这里不会执行。
 	 */
 	if(p == NULL) {
 		p = rp;
@@ -320,7 +322,7 @@ loop:
 	 * his segmentation registers.
 	 */
 	retu(rp->p_addr);
-	sureg();
+	sureg(); // 切换到新的进程
 	/*
 	 * If the new process paused because it was
 	 * swapped out, set the stack level to the last call
@@ -331,7 +333,7 @@ loop:
 	 *
 	 * You are not expected to understand this.
 	 */
-	if(rp->p_flag&SSWAP) {
+	if(rp->p_flag&SSWAP) {  // 说明被交换到了磁盘。
 		rp->p_flag =& ~SSWAP;
 		aretu(u.u_ssav);
 	}
@@ -339,7 +341,7 @@ loop:
 	 * The value returned here has many subtle implications.
 	 * See the newproc comments.
 	 */
-	return(1);
+	return(1);  // 因为前面已经切换了栈。所以这里返回回到main
 }
 
 /*

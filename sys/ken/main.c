@@ -95,11 +95,12 @@ main()
 	 * set up system process
 	 */
 
+    // 设置proc[0]的属性
 	proc[0].p_addr = *ka6;
 	proc[0].p_size = USIZE;
 	proc[0].p_stat = SRUN;
 	proc[0].p_flag =| SLOAD|SSYS;
-	u.u_procp = &proc[0];
+	u.u_procp = &proc[0];  // 把u.u_procp 和 proc[0] 关联起来
 
 	/*
 	 * set up 'known' i-nodes
