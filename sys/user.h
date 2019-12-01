@@ -10,6 +10,8 @@
  * stack per user; is cross referenced
  * with the proc structure for the
  * same process.
+ * TODO: 这里有一处不明白。既然user是每个process都有一份的
+ * 那要全局变量u干啥呢？
  */
 struct user
 {
